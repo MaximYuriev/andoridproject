@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#f0f0f0"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:context=".AuthActivity">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout1"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/authTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Авторизация" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/regTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Регистрация" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <FrameLayout
+        android:id="@+id/authPage"
+        android:layout_width="390dp"
+        android:layout_height="250dp"
+        android:background="#FFFFFF"
+        android:visibility="visible"
+        tools:visibility="gone">
+
+        <TextView
+            android:id="@+id/textAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="220dp"
+            android:textColor="#FF0000"
+            android:textColorLink="#FF0000" />
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="100dp"
+            android:ems="10"
+            android:hint="Пароль"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnAuth"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="170dp"
+            android:backgroundTint="#007BFF"
+            android:text="Войти" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/regPage"
+        android:layout_width="390dp"
+        android:layout_height="540dp"
+        android:background="#FFFFFF"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <EditText
+            android:id="@+id/emailReg"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="100dp"
+            android:ems="10"
+            android:hint="Имя пользователя"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/firstname"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="170dp"
+            android:ems="10"
+            android:hint="Имя (необязательно)"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/lastname"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="240dp"
+            android:ems="10"
+            android:hint="Фамилия (необязательно)"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/pswReg"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="310dp"
+            android:ems="10"
+            android:hint="Пароль"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/pswRegRep"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="380dp"
+            android:ems="10"
+            android:hint="Повторите пароль"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnReg"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="450dp"
+            android:backgroundTint="#007BFF"
+            android:text="Зарегистрироваться" />
+
+        <TextView
+            android:id="@+id/textReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="500dp"
+            android:text=""
+            android:textColor="#FF0000" />
+    </FrameLayout>
+
+</LinearLayout>

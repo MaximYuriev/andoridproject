@@ -28,6 +28,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import request.Chat
 import request.Client
+import kotlin.concurrent.fixedRateTimer
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +86,15 @@ class MainActivity : AppCompatActivity() {
                             response.text = createChatResponse["detail"].toString()
                         else
                             recreate()
+                    }
+            }
+        }
+        fixedRateTimer("timer", false, 0L, 3000){
+            this@MainActivity.runOnUiThread {
+                if (client.checkSession())
+                    lifecycleScope.launch {
+                        chats = Client.getUserChatList()
+                        adapter.data = chats
                     }
             }
         }

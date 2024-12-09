@@ -1,6 +1,5 @@
 package adapters
 
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,10 +36,19 @@ class ChatAdapter(private val chatActionListener: ChatActionListener) :
         val chat = data[position]
         val fullname: TextView = holder.itemView.findViewById(R.id.fullname)
         val lastMsg: TextView = holder.itemView.findViewById(R.id.lastMessageText)
+        val unreadMessageView: TextView = holder.itemView.findViewById(R.id.unreadMessages)
         holder.itemView.tag = chat
         fullname.text = chat.fullname
         if (chat.lastMessage != null)
             lastMsg.text = chat.lastMessage
+        if (chat.countUnreadMessages == null) {
+            unreadMessageView.text = ""
+            unreadMessageView.setBackgroundResource(R.drawable.unread_message_count_zero)
+        }
+        else{
+            unreadMessageView.text = chat.countUnreadMessages.toString()
+            unreadMessageView.setBackgroundResource(R.drawable.unread_message_count)
+        }
     }
 
     override fun onClick(v: View) {

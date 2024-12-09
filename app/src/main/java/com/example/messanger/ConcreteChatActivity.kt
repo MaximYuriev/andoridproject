@@ -48,6 +48,11 @@ class ConcreteChatActivity : AppCompatActivity() {
 
         val client = Client
 
+        lifecycleScope.launch {
+            if (chatId != null) {
+                client.readMessages(chatId)
+            }
+        }
         val adapter = MessageAdapter()
         val manager = LinearLayoutManager(this)
         val messagesList: RecyclerView = findViewById(R.id.messages)
@@ -82,11 +87,13 @@ class ConcreteChatActivity : AppCompatActivity() {
             finish()
         }
         val message: EditText = findViewById(R.id.messageContent)
+        var messageNow: String = ""
         val sendTextMessageButton: ImageButton = findViewById(R.id.sendMessages)
         sendTextMessageButton.setOnClickListener{
             lifecycleScope.launch {
-                client.sendMessage(chatId!!, message.text.toString().trim())
+                messageNow = message.text.toString().trim()
                 message.text.clear()
+                client.sendMessage(chatId!!, messageNow)
             }
         }
     }

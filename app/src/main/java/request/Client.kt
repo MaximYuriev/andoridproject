@@ -10,6 +10,7 @@ import io.ktor.client.plugins.websocket.WebSockets
 import io.ktor.client.plugins.websocket.webSocket
 import io.ktor.client.request.cookie
 import io.ktor.client.request.get
+import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
@@ -31,7 +32,7 @@ import java.util.Scanner
 
 data class SuccessResponse(val detail: String, val data: String?)
 
-data class Chat(val chatId:Int, val fullname:String, val lastMessage: String?)
+data class Chat(val chatId:Int, val fullname:String, val lastMessage: String?, val countUnreadMessages: Int?)
 
 data class ResponseChatLists(val detail: String, val data: MutableList<Chat>)
 
@@ -126,6 +127,13 @@ object Client {
             cookie(userSession!!.name, userSession!!.value)
             contentType(ContentType.Application.Json)
             setBody(body)
+        }
+    }
+
+    suspend fun readMessages(chatId: Int){
+        val response: HttpResponse = client.patch("http://192.168.0.104:8000/chat/message/$chatId"){
+            cookie(userSession!!.name, userSession!!.value)
+            contentType(ContentType.Application.Json)
         }
     }
 }
